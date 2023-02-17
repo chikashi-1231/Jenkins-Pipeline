@@ -1,0 +1,3 @@
+remoteUser: root
+hostname: cppcheck
+remoteDir: /var/src

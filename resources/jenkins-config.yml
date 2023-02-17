@@ -1,0 +1,10 @@
+# ここには全てのプロジェクトにおいて共通で利用するJenkinsの設定値を定義する。
+
+gitlab:
+    credential: tool_user
+
+sonarqube:
+    scanner: sonar-scanner
+    remoteUser: root
+    hostname: sonarqube
+    srcDir: /var/src

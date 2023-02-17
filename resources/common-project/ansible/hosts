@@ -1,0 +1,9 @@
+[dev_mg]
+172.17.0.1
+
+[dev_ap]
+172.17.0.1
+
+[all:vars]
+ansible_user=deploy
+ssh_private_key=/var/jenkins_home/.ssh/id_rsa

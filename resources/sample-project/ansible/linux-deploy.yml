@@ -1,0 +1,30 @@
+# Note that:
+# this includes the step to delete old artifact directory
+- name: deploy
+  hosts: "{{ host }}"
+  tasks:
+    - name: Clean artifact path
+      file:
+        path: "{{ dest_src }}"
+        state: absent
+
+    - name: Recreate artifact path
+      file:
+        path: "{{ dest_src }}"
+        state: directory
+
+    - name: Copy the artifact to server
+      copy:
+        src: "{{ copy_src }}"
+        dest: "{{ dest_src }}/{{ copy_src }}"
+
+    - name: Extract file
+      unarchive:
+        src: "{{ dest_src }}/{{ copy_src }}"
+        dest: "{{ dest_src }}"
+        remote_src: yes
+
+    - name: Delete unxtracted file
+      file:
+        path: "{{ dest_src }}/{{ copy_src }}"
+        state: absent
